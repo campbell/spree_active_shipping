@@ -4,7 +4,11 @@ Spree::Admin::ShipmentsController.class_eval do
 
   private
     def handle_shipping_error(e)
-      try(load_object) rescue nil
+      begin
+        load_object
+      rescue
+        nil
+      end
       flash.now[:error] = e.message
       render :action => "edit"
     end
