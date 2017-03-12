@@ -18,7 +18,11 @@ module Spree
 
           ActiveMerchant::Shipping::UPS.new(carrier_details)
         end
-        
+
+        def tracking_info(tracking_number)
+          carrier.tracking_info(tracking_number)
+        end
+
         protected
         # weight limit in ounces http://www.ups.com/content/us/en/resources/prepare/oversize.html
         def max_weight_for_country(country)
